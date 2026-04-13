@@ -13,3 +13,27 @@
   Kết quả trên phản ánh sự vượt trội về chỉ số mAP@50 khi cả hai lớp đối tượng chính đều đạt ngưỡng trên 0.96. Tuy nhiên hệ thống vẫn tồn tại một số hạn chế nhất định cần được cải thiện trong tương lai như sự mất cân bằng dữ liệu của nhãn person dẫn đến độ bao phủ thấp. Ngoài ra hiệu năng nhận diện trong các môi trường thiếu sáng hoặc có góc khuất phức tạp vẫn là một thách thức kỹ thuật đòi hỏi việc bổ sung thêm các kỹ thuật tăng cường dữ liệu Augmentation hoặc thu thập thêm mẫu thực tế.
 
   Nhìn chung SafetyAI là một minh chứng cho quy trình phát triển sản phẩm AI hoàn chỉnh từ khâu tiền xử lý dữ liệu huấn luyện mô hình đến triển khai giao diện web người dùng qua Flask. Ưu điểm lớn nhất của dự án là tính sẵn sàng trong việc tích hợp vào các hệ thống camera an ninh hiện có giúp chuyển đổi phương thức giám sát thủ công sang tự động hóa hoàn toàn. Đây là một nền tảng vững chắc để phát triển thêm các tính năng cao cấp hơn như cảnh báo qua âm thanh hoặc gửi thông báo vi phạm theo thời gian thực.
+
+## Công nghệ và Công cụ sử dụng
+
+* **Ngôn ngữ lập trình:** Python
+* **Mô hình AI:** YOLOv8 (Ultralytics)
+* **Web Framework:** Flask
+* **Xử lý hình ảnh:** OpenCV
+* **Định dạng tối ưu hóa:** ONNX / OpenVINO
+* **Giao diện người dùng:** HTML5, CSS3, JavaScript
+
+## Hướng dẫn chạy ứng dụng
+
+1. **Clone dự án về máy**
+    ```bash
+    git clone https://github.com/nltt1010/safetyAI/
+    ```
+2. **Cài đặt thư viện:** 
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. **Chạy app**
+   ```bash
+   python app.py
+   ```
