@@ -2,7 +2,7 @@
 
   Về khía cạnh dữ liệu mô hình được huấn luyện dựa trên bộ khung nhận diện vật thể YOLOv8 với ba lớp nhãn chính là head helmet và person. Qua quá trình thực nghiệm dữ liệu cho thấy sự tập trung cao độ vào việc phân biệt giữa các trạng thái an toàn và nguy cơ vi phạm. Các chỉ số đánh giá cho thấy mô hình đạt độ chính xác Precision và độ bao phủ Recall ở mức rất ấn tượng đối với hai nhãn quan trọng nhất là head và helmet giúp giảm thiểu tối đa tình trạng bỏ sót các trường hợp không đội mũ bảo hiểm.
 
-  Để đảm bảo khả năng vận hành ổn định trên các thiết bị phần cứng phổ thông hệ thống đã được thử nghiệm kỹ lưỡng trên cấu hình chip xử lý Intel Core i5 thế hệ thứ 12. Điểm đặc biệt của dự án nằm ở việc tối ưu hóa mô hình thông qua định dạng ONNX giúp duy trì tốc độ suy luận Inference ở mức khoảng 170ms mỗi khung hình ngay cả khi không có sự hỗ trợ từ các chip đồ họa rời GPU. Điều này chứng minh tính linh hoạt và khả năng triển khai rộng rãi của ứng dụng trên nhiều hạ tầng máy tính khác nhau.
+  Để đảm bảo khả năng vận hành ổn định trên các thiết bị phần cứng phổ thông hệ thống đã được thử nghiệm kỹ lưỡng trên cấu hình chip xử lý Intel Core i5 thế hệ thứ 12. Điểm đặc biệt của dự án nằm ở việc tối ưu hóa mô hình thông qua định dạng ONNX giúp duy trì tốc độ suy luận ở mức khoảng ổn mỗi khung hình ngay cả khi không có sự hỗ trợ từ các chip đồ họa rời GPU.
 
 
 <p align="center">
