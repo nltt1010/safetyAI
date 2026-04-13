@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafetyAI - Hệ Thống Giám Sát An Toàn</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+    <header>
+        <h1>SafetyAI Detector</h1>
+        <div class="mode-selector">
+            <button class="mode-btn active" onclick="showMode('upload')">Tải Ảnh</button>
+            <button class="mode-btn" onclick="showMode('live')">Webcam Trực Tiếp</button>
+        </div>
+    </header>
+
+    <main>
+        <div id="upload-mode" class="mode-content">
+            <form action="/" method="post" enctype="multipart/form-data" class="upload-form">
+                <div class="file-input">
+                    <input type="file" name="image" id="file" accept="image/*" required>
+                    <label for="file">Chọn hình ảnh...</label>
+                </div>
+                <button type="submit" class="btn-submit">Nhận diện ảnh</button>
+            </form>
+
+            {% if processed_img %}
+            <section class="result-area">
+                <h2>Kết quả nhận diện:</h2>
+                <div class="image-container">
+                    <img src="{{ url_for('static', filename='results/' + processed_img) }}" alt="Kết quả">
+                </div>
+            </section>
+            {% endif %}
+        </div>
+
+        <div id="live-mode" class="mode-content" style="display: none;">
+            <section class="live-stream">
+                <h2>Giám sát Webcam</h2>
+                <div class="video-container">
+                    <img id="webcam-img" data-src="{{ url_for('video_feed') }}" src="" width="100%" alt="Webcam Stream">
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+</body>
+<script>
+    // Hiển thị tên file khi đã chọn
+    const fileInput = document.getElementById('file');
+    const fileLabel = document.querySelector('label[for="file"]');
+
+    fileInput.addEventListener('change', function() {
+        if (this.files && this.files[0]) {
+            fileLabel.innerHTML = "Đã chọn: " + this.files[0].name;
+            fileLabel.style.borderColor = "#2ecc71"; // Đổi sang màu xanh lá
+        }
+    });
+
+    function showMode(mode) {
+    const uploadContent = document.getElementById('upload-mode');
+    const liveContent = document.getElementById('live-mode');
+    const webcamImg = document.getElementById('webcam-img');
+    const btns = document.querySelectorAll('.mode-btn');
+
+    // Cập nhật trạng thái nút
+    btns.forEach(btn => btn.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+
+    if (mode === 'upload') {
+        uploadContent.style.display = 'block';
+        liveContent.style.display = 'none';
+        webcamImg.src = ""; // Ngắt stream webcam
+    } else {
+        uploadContent.style.display = 'none';
+        liveContent.style.display = 'block';
+        // Chỉ bắt đầu load stream khi mở tab live
+        webcamImg.src = webcamImg.getAttribute('data-src');
+    }
+}
+</script>
+</html>
